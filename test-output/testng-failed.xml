@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [AppiumAndroidApp]">
+  <test thread-count="5" name="Automation of cases(failed)">
+    <parameter name="lName" value="Last Name"/>
+    <parameter name="fName" value="First Name"/>
+    <parameter name="usr" value="neiger.serrano@avantica.net"/>
+    <parameter name="pwd" value="123456"/>
+    <parameter name="error" value="There was an application error"/>
+    <classes>
+      <class name="tests.SignInPageTests">
+        <methods>
+          <include name="ClickSignInBtn" invocation-numbers="0"/>
+          <include name="setUp"/>
+          <include name="deleteDriver"/>
+        </methods>
+      </class> <!-- tests.SignInPageTests -->
+    </classes>
+  </test> <!-- Automation of cases(failed) -->
+</suite> <!-- Failed suite [AppiumAndroidApp] -->

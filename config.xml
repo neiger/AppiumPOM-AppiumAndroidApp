@@ -1,0 +1,33 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="AppiumAndroidApp"> 
+    <test name="Automation of cases">  
+        <parameter name="usr" value="neiger.serrano@avantica.net"/>
+        <parameter name="pwd" value="123456"/>
+        <parameter name="fName" value="First Name"/>
+        <parameter name="lName" value="Last Name"/>        
+        <parameter name="error" value="There was an application error" />
+        
+        
+        <classes>
+           	<class name="tests.StartUpPageTests" >
+           	    <methods>
+            		<exclude name="ValidateStartUpPage" />
+            	</methods>
+            </class> 
+            	
+            <class name="tests.SignInPageTests" >
+           	    <methods>
+            		<include name="ClickSignInBtn" />
+            	</methods>             	          
+            </class>
+            
+            <class name="tests.SignUpPageTests" >
+           	    <methods>
+            		<exclude name="ClickSignUpBtn" />
+            	</methods>             	          
+            </class> 
+             
+        </classes>
+    </test>
+</suite>
