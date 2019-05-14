@@ -39,16 +39,26 @@ public class SignInPage extends BasePage{
 	@AndroidFindBy(xpath="//android.widget.Button[contains(@resource-id,'log_in_button_login') and @text='SIGN IN WITH EMAIL']")
 	private MobileElement signInEmailBtn;
 	
+	/* Failed sign in message */
+	@AndroidFindBy(xpath="//android.widget.TextView[contains(@resource-id,'message')]")
+	private MobileElement errorMsg;
+	
 
 	// ######### METHODS #######################
 
 	
-	public boolean verifyLoads(){
-		return waitForElementToBeVisible(signInEmailBtn);// && waitForElementToBeVisible(pwdTxt); com.avantica.qapp:id/log_in_button_loginlog_in_button_login
-		//return waitForElementToBeVisible(qAppText) && waitForElementToBeVisible(qAppIcon) && waitForElementToBeVisible(signInEmail);
+	public boolean verifyLoads() throws InterruptedException{
+		return waitForElementToBeVisible(qAppText) && waitForElementToBeVisible(qAppIcon) && waitForElementToBeVisible(emailTxt) && 
+				waitForElementToBeVisible(pwdTxt) && waitForElementToBeVisible(signInEmailBtn);
 	}
 	
 	public boolean doSignIn(String usr, String pwd) {
 		return sendKeys(emailTxt, usr) && sendKeys(pwdTxt, pwd) && clickElement(signInEmailBtn);
 	}
+	
+	public boolean verifyLoginErrorMsg(String error) throws InterruptedException {
+		//wait(60000);
+		return compareTextElementByText(errorMsg, error);
+	}
+	
 }

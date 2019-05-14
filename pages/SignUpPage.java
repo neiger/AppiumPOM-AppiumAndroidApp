@@ -6,17 +6,25 @@ import code.BasePage;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
 public class SignUpPage extends BasePage{
 
 	public SignUpPage(AppiumDriver<MobileElement> driver) {
 		super(driver);
-		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
+		PageFactory.initElements(driver, this);
+		// TODO Auto-generated constructor stub
 	}
 
-		
-	//Fill fields Sign Up form
+	
+	/*Prompt button*/
+	@AndroidFindBy(id="com.android.packageinstaller:id/permission_allow_button")
+	private MobileElement prompt;
+	
+	/******************Sign Up Button*/
+	@AndroidFindBy(id="com.avantica.qapp:id/sign_up_button_email")
+	private MobileElement signUpEmail;
+	
+	//Fill fields
 	@AndroidFindBy(id="com.avantica.qapp:id/sign_up_email_email")
 	private MobileElement email;
 
@@ -38,19 +46,15 @@ public class SignUpPage extends BasePage{
 	@AndroidFindBy(id="android:id/button1")
 	private MobileElement okMsgBtn;
 	
-
-	/******************Methods*/////
 	
+	/******************ANOTHER PAGE CAN BE USED */////
 	
-	public boolean verifyLoads() {
-		return waitForElementToBeVisible(email) && waitForElementToBeVisible(pwd) && waitForElementToBeVisible(fName) && waitForElementToBeVisible(lName);
-	}
-	
-	public boolean doSignUp(String usrEmail, String usrPwd, String usrFName, String usrLName) {
+	public boolean failedSignUp(String usrEmail, String usrPwd, String usrFName, String usrLName) {
 		return sendKeys(email, usrEmail) && sendKeys(pwd, usrPwd) && sendKeys(fName, usrFName) && sendKeys(lName, usrLName) && clickElement(signUp);
 	}
 	
 	public boolean validateSignUpErrorMsg(String errorMsg) {
 		return verifyTextOnElement(errorMessage, errorMsg) && clickElement(okMsgBtn);
+	
 	}
 }
