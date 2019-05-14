@@ -18,16 +18,10 @@ public class SignUpPageTests extends BaseTest{
 	private StartUpPage startUpPage;
 	private SignUpPage signUpPage;
 	
-	public SignUpPageTests() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
-	
 	@BeforeMethod
 	// create IOS driver session
 	public void setUp() throws Exception {
-		driver = createAndroidDriver();		
+		driver = createMobileDriver();		
 		startUpPage = new StartUpPage(driver);
 		signUpPage = startUpPage.clickSignUp();
 	}
@@ -35,9 +29,8 @@ public class SignUpPageTests extends BaseTest{
 	@Parameters({"usr", "pwd", "fName", "lName", "error"})
 	@Test
 	public void ClickSignUpBtn(String usr, String pwd, String fName, String lName, String errorMsg){
-		//Assert.assertTrue(signUpPage.verifyLoads(), "[ERROR]  did not match with expected value");
-		Assert.assertTrue(signUpPage.doSignUp(usr, pwd, fName, lName), "[ERROR]  did not match with expected value");
-		//Assert.assertTrue(signUpPage.validateSignUpErrorMsg(errorMsg), "[ERROR]  did not match with expected value");
+		Assert.assertTrue(signUpPage.failedSignUp(usr, pwd, fName, lName), "[ERROR]  did not match with expected value");
+		Assert.assertTrue(signUpPage.validateSignUpErrorMsg(errorMsg), "[ERROR]  did not match with expected value");
 	}
 	
 	  @AfterMethod

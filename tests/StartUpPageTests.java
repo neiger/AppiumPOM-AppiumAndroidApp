@@ -18,7 +18,7 @@ public class StartUpPageTests extends BaseTest{
 	@BeforeMethod
 	// create IOS driver session
 	public void setUp() throws Exception {
-		driver = createAndroidDriver();		
+		driver = createMobileDriver();		
 		startUpPage = new StartUpPage(driver);
 	}
 
