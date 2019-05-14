@@ -5,8 +5,8 @@
         <parameter name="usr" value="neiger.serrano@avantica.net"/>
         <parameter name="pwd" value="123456"/>
         <parameter name="fName" value="First Name"/>
-        <parameter name="lName" value="Last Name"/>        
-        <parameter name="error" value="There was an application error" />
+        <parameter name="error" value="User with " />
+        <parameter name="error2" value=" as email does not exist or the password is invalid" />
         
         
         <classes>
