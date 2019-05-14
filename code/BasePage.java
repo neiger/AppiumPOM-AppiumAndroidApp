@@ -9,7 +9,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 
 
-public class BasePage {
+public abstract class BasePage {
 
 	//protected WebDriver driver;
 	protected AppiumDriver<MobileElement> driver;
@@ -54,9 +54,22 @@ public class BasePage {
 		}
 	}
 	
+	// method to compare text
+	public boolean compareTextElementByText(MobileElement element, String compareText) {
+		  try {
+			  //Thread.sleep(100000);
+			  wait.until(ExpectedConditions.textToBePresentInElement(element, compareText));
+		      return true;
+		  } catch (Exception e) {
+			  return false;
+		  }
+		 }
+	
+	
 	// method to verify text on a certain element
 	protected boolean verifyTextOnElement(MobileElement element, String text) {
 		try {
+			//Thread.sleep(60000);
 			waitForElementToBeVisible(element);
 			return wait.until(new ExpectedCondition<Boolean>() {
 				public Boolean apply(WebDriver arg0)
@@ -88,14 +101,6 @@ public class BasePage {
 			return link;
 		} catch (Exception e) {
 			return null;
-		}
-	}
-	
-	protected boolean isEnabled(MobileElement element) {
-		try {
-			return element.isEnabled();
-		} catch (Exception e){
-			return false;
 		}
 	}
 	
