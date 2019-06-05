@@ -51,6 +51,6 @@ public class SignUpPage extends BasePage{
 	}
 	
 	public boolean validateSignUpErrorMsg(String errorMsg) {
-		return verifyTextOnElement(errorMessage, errorMsg) && clickElement(okMsgBtn);
+		return compareTextElementByText(errorMessage, errorMsg) && clickElement(okMsgBtn);
 	}
 }

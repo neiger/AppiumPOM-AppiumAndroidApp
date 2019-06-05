@@ -25,17 +25,18 @@ public class SignInPageTests extends BaseTest {
 	@BeforeMethod
 	// create IOS driver session
 	public void setUp() throws Exception {
-		driver = createAndroidDriver();		
+		driver = createMobileDriver();		
 		startUpPage = new StartUpPage(driver);
-		signInPage = startUpPage.clickSignIn();
+		signInPage = startUpPage.clickSignInPage();
 	}
 
 		
-	@Parameters({"usr", "pwd"})
+	@Parameters({"usr", "pwd", "error", "error2" })
 	@Test
-	public void ClickSignInBtn(String usr, String pwd) throws InterruptedException{
-		//Assert.assertTrue(signInPage.verifyLoads(), "[ERROR]  did not match with expected value");
+	public void ClickSignInBtn(String usr, String pwd, String error, String error2) throws InterruptedException{
+		Assert.assertTrue(signInPage.verifyLoads(), "[ERROR]  did not match with expected value");
 		Assert.assertTrue(signInPage.doSignIn(usr, pwd), "[ERROR]  did not match with expected value");
+		Assert.assertTrue(signInPage.verifyLoginErrorMsg(error + usr + error2), "[ERROR]  did not match with expected value");
 	}
 	
 	  @AfterMethod

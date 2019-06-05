@@ -53,7 +53,7 @@ public class StartUpPage extends BasePage{
 		return waitForElementToBeVisible(qAppText) && waitForElementToBeVisible(qAppIcon)  && waitForElementToBeVisible(signInBtn) && waitForElementToBeVisible(signUpBtn);
 	}
 	
-	public SignInPage clickSignIn(){
+	public SignInPage clickSignInPage(){
 		signInPrompt();
 		return new SignInPage(driver);
 	}
